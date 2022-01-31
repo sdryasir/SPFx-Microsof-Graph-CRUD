@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sp-graph-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spGraph/SpGraphWebPart.js",
+          "manifest": "./src/webparts/spGraph/SpGraphWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpGraphWebPartStrings": "lib/webparts/spGraph/loc/{locale}.js"
+  }
+}
