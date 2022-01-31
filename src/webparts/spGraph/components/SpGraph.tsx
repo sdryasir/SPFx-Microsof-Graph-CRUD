@@ -11,12 +11,14 @@ export default function SpGraph(props) {
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [emp, setEmp] = useState(null)
+  const siteId = '0a65d918-0f87-4f2f-9106-5131b2846962';
+  const listId = '84154aa7-ad43-49d9-ab49-a72ca02bd107';
 
 
   const _getList = ()=>{
     setLoading(true)
     props.context.msGraphClientFactory.getClient().then(async(graphClient: MSGraphClient)=> {
-      await graphClient.api("sites/0a65d918-0f87-4f2f-9106-5131b2846962/lists/84154aa7-ad43-49d9-ab49-a72ca02bd107/items?expand=fields").get((error, events)=>{
+      await graphClient.api(`sites/${siteId}/lists/${listId}/items?expand=fields`).get((error, events)=>{
         if(error){
           console.log(error);
         }else{
@@ -29,7 +31,7 @@ export default function SpGraph(props) {
 
   const _handleDelete=(id:number)=>{
     props.context.msGraphClientFactory.getClient().then(async(graphClient: MSGraphClient)=> {
-      await graphClient.api(`sites/0a65d918-0f87-4f2f-9106-5131b2846962/lists/84154aa7-ad43-49d9-ab49-a72ca02bd107/items/${id}`).delete();
+      await graphClient.api(`sites/${siteId}/lists/${listId}/items/${id}`).delete();
       _getList();
     });
     
